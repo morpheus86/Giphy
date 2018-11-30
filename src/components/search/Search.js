@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { FormControl } from 'react-bootstrap';
 
-class SearchTermNum extends Component {
+class Search extends Component {
   constructor() {
     super()
     this.state = {
       input: ''
     }
   }
-  handleChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      [e.target.formControlsText]: e.target.value
-    })
+  onInputChange = (input) => {
 
   }
+
   render() {
+
     return (
       <form>
         <FormControl
@@ -23,11 +21,11 @@ class SearchTermNum extends Component {
           type={this.state.input}
           label="Text"
           placeholder="Enter text"
-          onChange={this.handleChange}
+          onChange={e => this.onInputChange(e.target.value)}
         />
       </form>
     );
   }
 }
 
-export default SearchTermNum;
+export default Search;

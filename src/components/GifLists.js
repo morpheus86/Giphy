@@ -2,12 +2,21 @@ import React from 'react';
 import GiphyCard from './GiphyCard'
 
 
-const LandingPage = (props) => {
+const GifLists = (props) => {
+
+  const gifs = props.gifs.map((pic) => {
+    return <GiphyCard key={pic.id} gif={pic} />
+  })
   return (
     <div>
-      <GiphyCard />
+      <ul>
+        {gifs}
+      </ul>
     </div>
   );
-};
 
-export default LandingPage;
+}
+
+
+
+export default GifLists;
