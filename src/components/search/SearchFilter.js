@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
+
 const giphyAPI = process.env.REACT_APP_GIPHY_API
 
 class SearchFilter extends React.Component {
@@ -24,6 +25,7 @@ class SearchFilter extends React.Component {
   render() {
     return (
       <ToggleButtonGroup
+        className="toggle"
         type="checkbox"
         value={this.state}
         onChange={this.handleChange}

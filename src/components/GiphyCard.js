@@ -4,7 +4,7 @@ import React from 'react';
 const GiphyCard = (image) => {
 
   return (
-    <div className='img1'>
+    <div className='img'>
       <img src={image.gif.images.downsized.url} />
     </div>
   );
