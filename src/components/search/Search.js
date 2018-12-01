@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormControl } from 'react-bootstrap';
+
 
 class Search extends Component {
   constructor() {
@@ -9,20 +9,15 @@ class Search extends Component {
     }
   }
   onInputChange = (input) => {
-
+    this.setState({ input })
+    this.props.onTermChange(input)
   }
 
   render() {
 
     return (
-      <form>
-        <FormControl
-          id="formControlsText"
-          type={this.state.input}
-          label="Text"
-          placeholder="Enter text"
-          onChange={e => this.onInputChange(e.target.value)}
-        />
+      <form className='search'>
+        <input onChange={e => this.onInputChange(e.target.value)} />
       </form>
     );
   }

@@ -8,10 +8,10 @@ const GifLists = (props) => {
     return <GiphyCard key={pic.id} gif={pic} />
   })
   return (
-    <div>
-      <ul>
-        {gifs}
-      </ul>
+    <div className='gifs-in-a-row'>
+
+      {gifs}
+
     </div>
   );
 
