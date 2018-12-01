@@ -34,6 +34,7 @@ class App extends Component {
       const data = await axios.get(url)
       const res = data.data
       const response = res.data
+      console.log(response)
       this.setState({
         gifs: response,
         allGifs: response
@@ -46,14 +47,16 @@ class App extends Component {
   render() {
     console.log('state', this.state.gifs)
     return (
-      <div className="container">
+      <div>
         <Search onTermChange={this.handleTermChange} />
-        <h1>Filter By Rating</h1>
-        {this.state.filterDataByRating.map((el, idx) => {
-          return (
-            <Button waves='light' key={idx} onClick={(e) => this.rateByPG(e, el)}>{el}</Button>
-          )
-        })}
+        <div className='filter-button'>
+          <h1>Filter By Rating</h1>
+          {this.state.filterDataByRating.map((el, idx) => {
+            return (
+              <Button waves='light' key={idx} onClick={(e) => this.rateByPG(e, el)}>{el}</Button>
+            )
+          })}
+        </div>
         <GifLists gifs={this.state.gifs} />
       </div>
     );

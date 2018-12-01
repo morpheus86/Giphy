@@ -9,9 +9,7 @@ const GifLists = (props) => {
   })
   return (
     <Row>
-      <Col s={12} m={5}>
-        {gifs}
-      </Col>
+      {gifs}
     </Row>
   );
 
