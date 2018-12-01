@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Row, Input } from 'react-materialize'
 
 class Search extends Component {
   constructor() {
@@ -16,9 +16,11 @@ class Search extends Component {
   render() {
 
     return (
-      <form className='search'>
-        <input onChange={e => this.onInputChange(e.target.value)} />
-      </form>
+      // <form className='search'>
+      <Row>
+        <Input type="text" label="Search Giphy" s={12} onChange={e => this.onInputChange(e.target.value)} />
+      </Row>
+
     );
   }
 }

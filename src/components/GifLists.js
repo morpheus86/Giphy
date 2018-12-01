@@ -1,6 +1,6 @@
 import React from 'react';
 import GiphyCard from './GiphyCard'
-
+import { Row, Col } from 'react-materialize'
 
 const GifLists = (props) => {
 
@@ -8,11 +8,11 @@ const GifLists = (props) => {
     return <GiphyCard key={pic.id} gif={pic} />
   })
   return (
-    <div className='gifs-in-a-row'>
-
-      {gifs}
-
-    </div>
+    <Row>
+      <Col s={12} m={5}>
+        {gifs}
+      </Col>
+    </Row>
   );
 
 }

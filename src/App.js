@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import GifLists from './components/GifLists'
-import Search from './components/search/Search'
+import GifLists from './components/GifLists';
+import Search from './components/search/Search';
+import { Button } from 'react-materialize'
 import axios from 'axios'
 import './App.css';
 
@@ -47,9 +48,10 @@ class App extends Component {
     return (
       <div className="container">
         <Search onTermChange={this.handleTermChange} />
+        <h1>Filter By Rating</h1>
         {this.state.filterDataByRating.map((el, idx) => {
           return (
-            <button key={idx} onClick={(e) => this.rateByPG(e, el)}> rate by {el}</button>
+            <Button waves='light' key={idx} onClick={(e) => this.rateByPG(e, el)}>{el}</Button>
           )
         })}
         <GifLists gifs={this.state.gifs} />
