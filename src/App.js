@@ -51,7 +51,7 @@ class App extends Component {
           <h2>Filter By Rating</h2>
           {this.state.filterDataByRating.map((el, idx) => {
             return (
-              <Button waves='light' key={idx} onClick={(e) => this.rating(e, el)}>{el}</Button>
+              <Button className='button' waves='light' key={idx} onClick={(e) => this.rating(e, el)}>{el}</Button>
             )
           })}
         </div>
