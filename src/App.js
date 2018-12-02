@@ -13,12 +13,12 @@ class App extends Component {
     this.state = {
       gifs: [],
       allGifs: [],
-      //both gifs will receive the gifs, one will be filtered depending on what we are trying to show and only what is set on state will show, while 
+      //both gifs and allGifs will receive the gifs, one will be filtered depending on what we are trying to show and only what is set on state will show, while 
       //still keeping al the data in allGifs.
       filterDataByRating: ["g", "pg", "pg-13", "R", "NC-17"]
     }
   }
-  rateByPG = (e, rate) => {
+  rating = (e, rate) => {
     e.preventDefault()
     let result = this.state.allGifs.filter(el => el.rating === rate)
     this.setState({
@@ -26,15 +26,14 @@ class App extends Component {
     })
   }
 
-  handleTermChange = async (term) => {
-    //we are making an async axios call to get all our data from the gify api depending on what is inputed
-    //we are keeping 2 sets of data in order to filter the data to our liking and setting the state with the data that we need to display
+  handleInputChange = async (term) => {
+    //this method allows us the get the requested data. We are making an async axios call to get all our data from the gify api depending on what is inputed.
+    //we are keeping the data in both gifs and allgifs by setting the state to what we are receiving from the GIPHY api.
     try {
       const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=${giphyAPI}`;
       const data = await axios.get(url)
       const res = data.data
       const response = res.data
-      console.log(response)
       this.setState({
         gifs: response,
         allGifs: response
@@ -45,15 +44,14 @@ class App extends Component {
   }
 
   render() {
-    console.log('state', this.state.gifs)
     return (
       <div>
-        <Search onTermChange={this.handleTermChange} />
+        <Search onTermChange={this.handleInputChange} />
         <div className='filter-button'>
-          <h1>Filter By Rating</h1>
+          <h2>Filter By Rating</h2>
           {this.state.filterDataByRating.map((el, idx) => {
             return (
-              <Button waves='light' key={idx} onClick={(e) => this.rateByPG(e, el)}>{el}</Button>
+              <Button waves='light' key={idx} onClick={(e) => this.rating(e, el)}>{el}</Button>
             )
           })}
         </div>
