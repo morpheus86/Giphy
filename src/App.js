@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import GifLists from './components/GifLists';
 import Search from './components/search/Search';
-import { Button } from 'react-materialize'
-import axios from 'axios'
+import { Button } from 'react-materialize';
+import axios from 'axios';
 import './App.css';
 
 const giphyAPI = process.env.REACT_APP_GIPHY_API
