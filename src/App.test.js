@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Search from './components/search/Search';
 import GifLists from './components/GifLists';
-import GiphyCard from './components/GiphyCard'
+import GiphyCard from './components/GiphyCard';
 import { configure, shallow, mount } from 'enzyme';
 import axios from 'axios'
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
 import { expect } from 'chai';
-import { spy, sinon } from 'sinon';
+import { sinon } from 'sinon';
 /* 
-mock = meaning fake data so we dont do an api call to make the test run run quicker
+mock = meaning fake data so we dont do an api call to make the test run therefore the test run quicker
 */
 
 configure({ adapter: new Adapter() });

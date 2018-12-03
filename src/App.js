@@ -20,10 +20,14 @@ class App extends Component {
   }
   rating = (e, rate) => {
     e.preventDefault()
-    let result = this.state.allGifs.filter(el => el.rating === rate)
-    this.setState({
-      gifs: result
-    })
+    try {
+      let result = this.state.allGifs.filter(el => el.rating === rate)
+      this.setState({
+        gifs: result
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   handleInputChange = async (term) => {
@@ -45,16 +49,18 @@ class App extends Component {
   }
 
   render() {
+    const filterResult = this.state.filterDataByRating.map((el, idx) => {
+      return (
+        <Button className='button' waves='light' key={idx} onClick={(e) => this.rating(e, el)}>{el}</Button>
+      )
+    })
+
     return (
       <div>
         <Search onTermChange={this.handleInputChange} />
         <div className='filter-button'>
           <h2>Filter By Rating</h2>
-          {this.state.filterDataByRating.map((el, idx) => {
-            return (
-              <Button className='button' waves='light' key={idx} onClick={(e) => this.rating(e, el)}>{el}</Button>
-            )
-          })}
+          {filterResult}
         </div>
         <GifLists gifs={this.state.gifs} />
       </div>
