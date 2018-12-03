@@ -7,7 +7,7 @@
 .env
 # testing
 /coverage
-
+.gitignore
 # production
 /build
 
