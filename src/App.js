@@ -30,7 +30,8 @@ class App extends Component {
     //this method allows us the get the requested data. We are making an async axios call to get all our data from the gify api depending on what is inputed.
     //we are keeping the data in both gifs and allgifs by setting the state to what we are receiving from the GIPHY api.
     try {
-      const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=${giphyAPI}`;
+      const replace = term.replace(/\s/g, '+')
+      const url = `http://api.giphy.com/v1/gifs/search?q=${replace}&api_key=${giphyAPI}`;
       const data = await axios.get(url)
       const res = data.data
       const response = res.data

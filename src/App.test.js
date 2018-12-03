@@ -4,14 +4,16 @@ import App from './App';
 import Search from './components/search/Search';
 import GifLists from './components/GifLists';
 import GiphyCard from './components/GiphyCard'
-import { configure, shallow } from 'enzyme';
+import { configure, shallow, mount } from 'enzyme';
+import axios from 'axios'
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
 import { expect } from 'chai';
-import { spy } from 'sinon';
+import { spy, sinon } from 'sinon';
 /* 
 mock = meaning fake data so we dont do an api call to make the test run run quicker
 */
+
 configure({ adapter: new Adapter() });
 
 it('renders without crashing', () => {
@@ -19,6 +21,8 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+//App Component
 
 describe('REACT', () => {
   describe('APP Component', () => {
@@ -47,16 +51,27 @@ describe('REACT', () => {
       expect(app.state().filterDataByRating).to.includes('pg-13');
     })
 
-    //methods 
+    //methods
+    it('has a `rating` method which change the state depending of what rating is clicked on', () => {
+      const ratingMock = jest.fn()
+      const component = mount(<App handleClick={ratingMock} />)
 
-    it('has a method called `rating` which filter all the gifs and set it as the gifs on state', () => {
-      const rate = 'g'
-      const e = app.simulate('click', { preventDefault() { } })
-      console.log(app.instance().rating)
-      expect(app.instance().rating).to.be.a('function');
-      // app.instance().rating(rate);
-      // expect(app.state().gifs.rating).to.be.deep.equal(e, rate);
+      beforeAll(() => {
+        const resolved = new Promise((r) => r({ data: Array.from([{ 0: { description: 'desc' } }]) }));
+        sinon.stub(axios, 'get').returns(resolved);
+        component.find('input').node.value = 'test';
+        component.find('button').simulate('click', { preventDefault: jest.fn() });
+      });
+
+      expect(ratingMock.mock.calls).to.be.an('array')
     })
+    it('changes the state when `handleInputChange` is called', () => {
+      const component = mount(
+        <App />
+      );
+      component.instance().handleInputChange({ 0: { description: 'desc' } });
+      expect(Object.keys(component.state('gifs'))).to.be.an('array');
+    });
   })
 })
 
