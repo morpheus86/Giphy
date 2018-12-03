@@ -27,6 +27,7 @@ Features / selling point
 •	The GIPHY list we receive can also be filtered multiple times to get a specific GIPHY with a specific rating if it does exist. 
 •	The rating method in app allows us to filter the Giphy received depending on the specific rating.
 •	Redux was considered at the beginning of the project to store and manage our entire state but the app is simple enough to build it with just React. 
+
 Area for Improvement
 
 Testing: 
@@ -34,3 +35,5 @@ I am not comfortable enough with testing React component. Therefore, the app bui
 
 Front-end routing: 
 Front end Routing could have also be incorporated via React Router but then again we really don’t need to navigate to a page when searching since every single input in the search bar is making an api call to our external api and our filter functionality when clicked on is just displaying the list being filter. 
+
+
