@@ -13,8 +13,6 @@ class App extends Component {
     this.state = {
       gifs: [],
       allGifs: [],
-      //both gifs and allGifs will receive the gifs, one will be filtered depending on what we are trying to show and only what is set on state will show, while
-      //still keeping al the data in allGifs.
       filterDataByRating: ["g", "pg", "pg-13", "R", "NC-17"]
     };
   }
@@ -44,8 +42,6 @@ class App extends Component {
   }
 
   handleInputChange = async term => {
-    //this method allows us the get the requested data. We are making an async axios call to get all our data from the gify api depending on what is inputed.
-    //we are keeping the data in both gifs and allgifs by setting the state to what we are receiving from the GIPHY api.
     try {
       const replace = term.replace(/\s/g, "+");
       const url = `http://api.giphy.com/v1/gifs/search?q=${replace}&api_key=${giphyAPI}`;
